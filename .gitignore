@@ -3,9 +3,12 @@
 ### Example user template
 
 # The word source
-docs_with_keyword/
+/docs_with_keyword/*
+!/docs_with_keyword/.gitignore
+
 
 # IntelliJ project files
+/.idea
 .idea
 *.iml
 out
