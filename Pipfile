@@ -1,11 +1,12 @@
 [[source]]
 name = "pypi"
-url = "https://mirrors.aliyun.com/pypi/simple"
-verify_ssl = true
+url = "http://mirrors.aliyun.com/pypi/simple"
+verify_ssl = false
 
 [dev-packages]
 
 [packages]
+pypiwin32 = "*"
 python-docx = "*"
 
 [requires]
