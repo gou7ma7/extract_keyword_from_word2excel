@@ -3,24 +3,8 @@ import os
 from win32com import client as wc
 from docx import Document
 
-from config import KEY_FOLDS_PATH
-
-
-def read_key_folds(path):
-    try:
-        listdir = os.listdir(path)
-    except FileNotFoundError:
-        print('please keep the folder called docs_with_keyword')
-        return []
-
-    for fold_name in listdir:
-        global key_word
-        key_word = fold_name
-
-        fold_path = os.path.join(path, fold_name)
-        if not os.path.isdir(fold_path):
-            continue
-        yield fold_path
+from excel_deal import ExcelSaver
+from path_deal import read_key_folds
 
 
 def deal_doc_folds():
@@ -34,11 +18,11 @@ def deal_doc_folds():
                 print('正在转换为docx格式', doc_path)
                 doc2docx(doc_path)
             elif file.endswith('.docx'):
-                ex_para(doc_path, key_word)
+                extract_paragraph(doc_path, key_word)
         print("处理关键字文件夹：", fold_path, key_word)
 
 
-def ex_para(doc_path, kw):
+def extract_paragraph(doc_path, kw):
     document = Document(doc_path)
     for paragraph in document.paragraphs:
         if kw in paragraph.text:
@@ -63,5 +47,6 @@ if __name__ == '__main__':
     deal_doc_folds()
     get_info()
     print()
+    ExcelSaver()
 
     print('ok')
