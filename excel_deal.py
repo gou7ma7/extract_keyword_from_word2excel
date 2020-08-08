@@ -8,8 +8,8 @@ class ExcelSaver(object):
         self.worksheet1.write_row("A1", ['案件文书名称', '审结年份', '所属省份', '关键词', '关键词所在段落'])
         self.now_row = 2
 
-    def add_row(self, document_name, completion_year, province, key_word, para):
-        self.worksheet1.write_row(f"A{self.now_row}", [document_name, completion_year, province, key_word, para])
+    def add_row(self, document_name, completion_year, province, key_word, para, word_path):
+        self.worksheet1.write_row(f"A{self.now_row}", [document_name, completion_year, province, key_word, para, word_path])
         self.now_row += 1
 
     def save_xlsx(self):  # __del__处理的话self.f 已经被关掉了会报错

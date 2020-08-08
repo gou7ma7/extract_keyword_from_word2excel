@@ -16,7 +16,7 @@ if __name__ == '__main__':
         completion_year, province, para = wd.extract_paragraph()
         print(completion_year, province, para)
         print()
-        es.add_row(file_name, completion_year, province, key_word, para)  # 目前excel格式也是固定的
+        es.add_row(file_name, completion_year, province, key_word, para, word_path)  # 目前excel格式也是固定的
     es.save_xlsx()
 
     print('ok')

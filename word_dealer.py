@@ -54,4 +54,4 @@ class WordDealer(object):
         doc.Close()
         word.Quit()
         print('.doc转换完成', self.doc_path)
-        time.sleep(2)
+        time.sleep(0.5)
