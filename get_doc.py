@@ -1,2 +1,0 @@
-class DocFileReader(object):
-    pass

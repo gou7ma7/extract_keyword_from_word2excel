@@ -1,4 +1,4 @@
-# extract_paragraphs_in_word_by_keywords
+# extract_keyword_paragraphs
 
 ## setup
 1. https://www.python.org/getit/ 官网下载python;
