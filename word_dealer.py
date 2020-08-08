@@ -37,9 +37,18 @@ class WordDealer(object):
         except:
             completion_year = ''
 
+        flag = (province == '' or completion_year == '')
+
         for paragraph in document.paragraphs:
-            if self.key_word in paragraph.text:
-                para += '\n' + paragraph.text
+            text = paragraph.text
+            if flag and '(' in text and '号' in text:
+                flag = False
+                symbol_index = text.find(')')
+                completion_year = text[symbol_index - 4: symbol_index]
+                province = text[symbol_index + 1]
+
+            if self.key_word in text:
+                para += '\n' + text
 
         return completion_year, province, para
 
