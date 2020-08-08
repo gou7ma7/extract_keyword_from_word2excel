@@ -1,4 +1,5 @@
 import os
+import time
 
 from win32com import client as wc
 from retry import retry
@@ -13,7 +14,7 @@ class WordDealer(object):
             self.key_word = key_word.split('第')[0]
         else:
             self.key_word = key_word
-        if doc_path.endswith('.doc'):
+        if doc_path.endswith('.doc') and not doc_path.startswith('~$'):
             self.is_doc = True
             print('当前文件为doc格式，正在转换为docx格式用于处理', doc_path)
 
@@ -52,3 +53,5 @@ class WordDealer(object):
                    False)  # 转化后路径下的文件
         doc.Close()
         word.Quit()
+        print('.doc转换完成', self.doc_path)
+        time.sleep(2)

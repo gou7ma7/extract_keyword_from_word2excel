@@ -30,14 +30,14 @@ class PathReader(object):
     def get_word_path(self):
         for fold_path in self.read_key_folds_path():
             for file_name in os.listdir(fold_path):  # 这个路径是读取出来的，不考虑有问题
-                if file_name.endswith('.doc'):  # 由于目前只处理word，所以在此判断
+                if file_name.endswith('.doc') and not file_name.startswith('~$'):  # 由于目前只处理word，所以在此判断
                     if os.path.exists(os.path.join(fold_path, file_name + 'x')):
                         print(file_name, '已经转换过doc，跳过本次转换')
                         continue
                     self.file_name = file_name
                     file_path = os.path.join(fold_path, file_name)
                     yield file_path
-                elif file_name.endswith('.docx'):
+                elif file_name.endswith('.docx') and not file_name.startswith('~$'):
                     self.file_name = file_name
                     file_path = os.path.join(fold_path, file_name)
                     yield file_path
