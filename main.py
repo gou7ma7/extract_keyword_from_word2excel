@@ -1,4 +1,3 @@
-import os
 
 from excel_deal import ExcelSaver
 from path_deal import PathReader
@@ -13,7 +12,6 @@ if __name__ == '__main__':
         file_name = pr.get_file_name()
         wd = WordDealer(word_path, key_word)
 
-        wd.extract_paragraph()
         completion_year, province, para = wd.extract_paragraph()
         print(completion_year, province, para)
         es.add_row(file_name, completion_year, province, key_word, para)  # 目前excel格式也是固定的

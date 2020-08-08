@@ -9,6 +9,7 @@ verify_ssl = false
 pypiwin32 = "*"
 python-docx = "*"
 xlsxwriter = "*"
+retry = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,7 +1,7 @@
 import os
 
 from win32com import client as wc
-
+from retry import retry
 from docx import Document
 
 
@@ -16,6 +16,7 @@ class WordDealer(object):
         if doc_path.endswith('.doc'):
             self.is_doc = True
             print('当前文件为doc格式，正在转换为docx格式用于处理', doc_path)
+
             self.doc2docx()
 
     def extract_paragraph(self):
@@ -41,8 +42,10 @@ class WordDealer(object):
 
         return completion_year, province, para
 
+    @retry(tries=10)
     def doc2docx(self):
         word = wc.Dispatch('Word.Application')
+
         doc = word.Documents.Open(os.path.abspath(self.doc_path))  # 目标路径下的文件
         self.doc_path += 'x'
         doc.SaveAs((os.path.abspath(self.doc_path)), 12, False, "", True, "", False, False, False,
