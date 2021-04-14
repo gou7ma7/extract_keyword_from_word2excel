@@ -1,7 +1,7 @@
 
-from excel_deal import ExcelSaver
-from path_deal import PathReader
-from word_dealer import WordDealer
+from dealer.excel_deal import ExcelSaver
+from dealer.path_deal import PathReader
+from dealer.word_dealer import WordDealer
 
 if __name__ == '__main__':
     pr = PathReader()
